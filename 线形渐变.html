@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			什么是线性渐变
+所谓线性渐变，是指从开始地点到结束地点，颜色呈直线的徐徐变化的效果。为了实现这种效果，我们绘制时必须制定开始和结束的颜色。而在Canvas中，不仅可以只指定开始和结尾的两点，中途的位置也能任意指定，所以可以实现各种奇妙的效果。
+		-->
+		<!--
+			为了绘制线性渐变，我们需要使用createLinearGradient命令，这个命令可以获得一个CanvasGradient对象，使用这个对象的addColorStop方法添加颜色，就可以了。
+		-->
+		<canvas id="c1" width="400" height="400"></canvas>
+	</body>
+</html>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$('body').css('background','black')
+	var c = document.getElementById("c1")
+	var ctx = c.getContext('2d');
+
+	//var obj = c.createLinearGradient(x0,y0,x1,y1);创建一个线形渐变对象，参数是他的起始位置和终点位置
+	//如果起始位置和终点位置连线时一条横着的线，就是横向渐变，是竖着的线就是纵向渐变。斜着的线就是斜着渐变
+	//obj.addColorStop(offset,color);offSet:0-1 指渐变的范围
+	/*ctx.beginPath();
+	var obj = ctx.createLinearGradient(0,0,0,200)
+	obj.addColorStop(0,'orange');
+	obj.addColorStop(0.5,'pink');
+	obj.addColorStop(1,'blue');
+	ctx.fillStyle=obj;
+	ctx.fillRect(0,0,200,200)
+	ctx.closePath();*/
+	/*
+	 这里使用createRadialGradient来获得Canvas的CanvasGradient对象，所以addColorStop方法也是通用的。
+	 createRadialGradient(x1,y1,r1,x2,y2,r2)
+	 * */
+	ctx.beginPath();
+	var obj2 = ctx.createRadialGradient(200,200,100,200,200,150)
+	obj2.addColorStop(0,'orange');
+	obj2.addColorStop(0.3,'pink');
+	obj2.addColorStop(1,'blue');
+	ctx.fillStyle=obj2;
+	ctx.fillRect(0,0,400,400)
+</script>
